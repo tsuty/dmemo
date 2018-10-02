@@ -3,6 +3,8 @@ class TableMemoRawDatasetColumn < ActiveRecord::Base
 
   def format_value(value)
     case sql_type
+    when /binary/
+      "<binary>"
     when 'timestamp without time zone'
       d, t, z = value.to_s.split
       "#{d} #{t}"
